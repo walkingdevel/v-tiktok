@@ -33,18 +33,21 @@ pub fn new_tiktok_video(url_or_video_id string) !TikTokVideo {
 	}
 }
 
+// get_meta gets incomplete meta-information about the video.
 pub fn (mut t TikTokVideo) get_meta() !TikTokVideoMeta {
 	t.fetch_video_info()!
 
 	return t.meta
 }
 
-pub fn (mut t TikTokVideo) download_file(output_path string) ! {
+// download_file downloads the video and saves it as `output_file_path`.
+pub fn (mut t TikTokVideo) download_file(output_file_path string) ! {
 	t.fetch_video_info()!
 
-	http.download_file(t.video_file_url, output_path)!
+	http.download_file(t.video_file_url, output_file_path)!
 }
 
+// download_bytes downloads the video as bytes.
 pub fn (mut t TikTokVideo) download_bytes() ![]u8 {
 	t.fetch_video_info()!
 
@@ -53,6 +56,7 @@ pub fn (mut t TikTokVideo) download_bytes() ![]u8 {
 	return response.bytes()
 }
 
+// get_file_url gets the direct download file URL.
 pub fn (mut t TikTokVideo) get_file_url() !string {
 	t.fetch_video_info()!
 
