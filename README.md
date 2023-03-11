@@ -2,6 +2,12 @@
 
 A V library for downloading TikTok videos. Inspired by https://github.com/Sharqo78/VTik
 
+## Install
+
+```sh
+v install https://github.com/walkingdevel/v-tiktok
+```
+
 ## API
 
 ```v
